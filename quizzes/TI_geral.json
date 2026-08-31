@@ -12,34 +12,34 @@
         "Instalar programas"
       ],
       "correta": 0,
-      "tempo": 30,
-      "dobro": false
+      "tempo": 20,
+      "dobro": true
     },
     {
       "id": 2,
       "enunciado": "Qual linguagem e executada diretamente pelos navegadores para adicionar interatividade a paginas web?",
       "alternativas": [
         "Java",
-        "C",
         "JavaScript",
+        "C",
         "SQL"
       ],
-      "correta": 2,
-      "tempo": 30,
-      "dobro": false
+      "correta": 1,
+      "tempo": 20,
+      "dobro": true
     },
     {
       "id": 3,
       "enunciado": "Qual tecnologia e utilizada principalmente para estruturar o conteudo de uma pagina web?",
       "alternativas": [
         "CSS",
-        "HTML",
         "SQL",
+        "HTML",
         "Python"
       ],
-      "correta": 1,
+      "correta": 2,
       "tempo": 15,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 4,
@@ -47,25 +47,25 @@
       "alternativas": [
         "HTML",
         "Java",
-        "CSS",
-        "MySQL"
+        "MySQL",
+        "CSS"
       ],
-      "correta": 2,
+      "correta": 3,
       "tempo": 15,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 5,
       "enunciado": "Qual estrutura permite que um programa tome decisoes com base em uma condicao?",
       "alternativas": [
-        "if",
         "import",
+        "if",
         "print",
         "return"
       ],
-      "correta": 0,
+      "correta": 1,
       "tempo": 15,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 6,
@@ -78,20 +78,20 @@
       ],
       "correta": 2,
       "tempo": 15,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 7,
       "enunciado": "O que e uma funcao em programacao?",
       "alternativas": [
-        "Um bloco reutilizavel de codigo",
         "Um tipo de banco de dados",
         "Um componente de hardware",
-        "Um protocolo de rede"
+        "Um protocolo de rede",
+        "Um bloco reutilizavel de codigo"
       ],
-      "correta": 0,
+      "correta": 3,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 8,
@@ -104,20 +104,20 @@
       ],
       "correta": 0,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 9,
       "enunciado": "O que significa Back-End no desenvolvimento web?",
       "alternativas": [
         "Apenas o design visual",
+        "A tela exibida para o usuario",
         "A parte que executa logica, regras de negocio e acesso a dados",
-        "Somente os arquivos CSS",
-        "A tela exibida para o usuario"
+        "Somente os arquivos CSS"
       ],
-      "correta": 1,
+      "correta": 2,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 10,
@@ -136,53 +136,53 @@
       "id": 11,
       "enunciado": "Qual linguagem e utilizada principalmente para realizar consultas em bancos de dados relacionais?",
       "alternativas": [
+        "SQL",
         "HTML",
         "CSS",
-        "SQL",
         "JavaScript"
       ],
-      "correta": 2,
+      "correta": 0,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 12,
       "enunciado": "Qual comando SQL e normalmente utilizado para consultar dados de uma tabela?",
       "alternativas": [
         "DELETE",
-        "SELECT",
         "UPDATE",
-        "DROP"
+        "DROP",
+        "SELECT"
       ],
-      "correta": 1,
+      "correta": 3,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 13,
       "enunciado": "Qual e a funcao de uma chave primaria em um banco de dados relacional?",
       "alternativas": [
-        "Identificar unicamente cada registro",
         "Excluir automaticamente uma tabela",
+        "Identificar unicamente cada registro",
         "Criptografar o banco",
         "Conectar o computador a internet"
       ],
-      "correta": 0,
+      "correta": 1,
       "tempo": 25,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 14,
       "enunciado": "Para que serve o Git?",
       "alternativas": [
         "Editar imagens",
-        "Controlar versoes de projetos",
         "Criar bancos de dados",
+        "Controlar versoes de projetos",
         "Executar consultas SQL"
       ],
-      "correta": 1,
+      "correta": 2,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 15,
@@ -195,59 +195,59 @@
       ],
       "correta": 0,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 16,
       "enunciado": "Qual componente armazena temporariamente dados utilizados pelos programas em execucao?",
       "alternativas": [
         "SSD",
-        "Memoria RAM",
         "Placa-mae",
-        "Fonte de alimentacao"
+        "Fonte de alimentacao",
+        "Memoria RAM"
       ],
-      "correta": 1,
+      "correta": 3,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 17,
       "enunciado": "O que significa a sigla IP em redes de computadores?",
       "alternativas": [
-        "Internet Protocol",
         "Internal Program",
         "Internet Program",
+        "Internet Protocol",
         "Information Process"
       ],
-      "correta": 0,
+      "correta": 2,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 18,
       "enunciado": "Qual protocolo e utilizado normalmente para acessar paginas web de forma segura?",
       "alternativas": [
         "FTP",
-        "HTTP",
         "HTTPS",
+        "HTTP",
         "SMTP"
       ],
-      "correta": 2,
+      "correta": 1,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 19,
       "enunciado": "O que e phishing?",
       "alternativas": [
-        "Uma linguagem de programacao",
         "Uma tecnica para enganar usuarios e obter informacoes",
+        "Uma linguagem de programacao",
         "Um banco de dados",
         "Um sistema operacional"
       ],
-      "correta": 1,
+      "correta": 0,
       "tempo": 20,
-      "dobro": false
+      "dobro": true
     },
     {
       "id": 20,
@@ -255,10 +255,10 @@
       "alternativas": [
         "Usar a mesma senha em todos os sites",
         "Desativar atualizacoes",
-        "Ativar autenticacao em dois fatores",
-        "Compartilhar a senha com colegas"
+        "Compartilhar a senha com colegas",
+        "Ativar autenticacao em dois fatores"
       ],
-      "correta": 2,
+      "correta": 3,
       "tempo": 25,
       "dobro": true
     }

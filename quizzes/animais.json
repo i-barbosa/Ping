@@ -1,0 +1,123 @@
+{
+  "titulo": "Animais",
+  "descricao": "Perguntas sobre animais, suas caracteristicas, habitats e comportamentos.",
+  "perguntas": [
+    {
+      "id": 1,
+      "enunciado": "Qual é o maior animal terrestre do mundo?",
+      "alternativas": [
+        "Elefante-africano",
+        "Girafa",
+        "Rinoceronte",
+        "Hipopótamo"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 2,
+      "enunciado": "Qual desses animais é um mamífero?",
+      "alternativas": [
+        "Tubarão",
+        "Galinha",
+        "Golfinho",
+        "Jacaré"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 3,
+      "enunciado": "Qual é o animal terrestre mais rápido do mundo?",
+      "alternativas": [
+        "Leão",
+        "Guepardo",
+        "Cavalo",
+        "Lobo"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 4,
+      "enunciado": "Qual desses animais é uma ave?",
+      "alternativas": [
+        "Morcego",
+        "Pinguim",
+        "Baleia",
+        "Tartaruga"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 5,
+      "enunciado": "Qual desses animais é um anfíbio?",
+      "alternativas": [
+        "Sapo",
+        "Cobra",
+        "Águia",
+        "Golfinho"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 6,
+      "enunciado": "Qual desses animais costuma viver em grupos chamados matilhas?",
+      "alternativas": [
+        "Lobo",
+        "Tigre",
+        "Leopardo",
+        "Urso"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 7,
+      "enunciado": "Qual animal é famoso por construir represas?",
+      "alternativas": [
+        "Castor",
+        "Lontra",
+        "Capivara",
+        "Jacaré"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 8,
+      "enunciado": "Qual animal possui oito braços?",
+      "alternativas": [
+        "Lula",
+        "Polvo",
+        "Caranguejo",
+        "Estrela-do-mar"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 9,
+      "enunciado": "Qual animal é conhecido por sua capacidade de regenerar partes do corpo?",
+      "alternativas": [
+        "Axolote",
+        "Girafa",
+        "Cavalo",
+        "Águia"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": false
+    }
+  ]
+}

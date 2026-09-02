@@ -106,7 +106,8 @@ body {
   text-align: left;
 }
 
-#nome {
+#nome,
+#pin {
   width: 100%;
   font-size: 20px;
   font-weight: 600;
@@ -121,12 +122,18 @@ body {
   transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
 }
 
-#nome:focus {
+#pin {
+  letter-spacing: 4px;
+}
+
+#nome:focus,
+#pin:focus {
   border-color: var(--azul);
   box-shadow: 0 0 0 4px rgba(19, 104, 206, 0.25);
 }
 
-#nome::placeholder {
+#nome::placeholder,
+#pin::placeholder {
   color: #555;
 }
 
@@ -427,6 +434,10 @@ body {
 #posicao {
   font-weight: 800;
   color: var(--acento);
+}
+
+#posicao .chama {
+  color: #ff7a1a;
 }
 
 #pontos {

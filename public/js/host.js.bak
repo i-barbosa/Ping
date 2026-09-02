@@ -32,13 +32,9 @@ const elPlacar = el('placar');
 const elPerguntaDificil = el('pergunta-dificil');
 const elRelatorio = el('relatorio');
 const elContador = el('contador');
-const elAutoAvancar = el('auto-avancar');
 const elAvancar = el('avancar');
 const elReacoes = el('reacoes');
 const elSair = el('sair');
-
-// converte o <i data-lucide="users"> estatico do html antes da primeira mensagem do jogo chegar
-if (window.lucide) lucide.createIcons();
 
 elSair.addEventListener('click', () => {
   fetch('/api/sair', { method: 'POST' }).finally(() => {
@@ -116,13 +112,11 @@ function tocarFim() {
 /* ===================== REACOES ===================== */
 
 function mostrarReacao(dados) {
-  // dados.icone ja vem validado contra ICONES_REACAO no servidor, seguro interpolar na classe
   const bolha = document.createElement('span');
   bolha.className = 'reacao-flutuante';
-  bolha.innerHTML = '<i data-lucide="' + dados.icone + '"></i>';
+  bolha.textContent = dados.emoji;
   bolha.style.left = 8 + Math.random() * 84 + '%';
   elReacoes.appendChild(bolha);
-  if (window.lucide) lucide.createIcons();
   bolha.addEventListener('animationend', () => bolha.remove());
 }
 
@@ -147,10 +141,6 @@ function conectar() {
         mostrarReacao(dados);
         return;
       }
-      if (dados.tipo === 'sala_criada') {
-        elPinSala.textContent = 'PIN: ' + dados.pin;
-        return;
-      }
       desenhar(dados);
     } catch (erro) {
       console.error(erro);
@@ -169,7 +159,6 @@ conectar();
 setInterval(() => enviar({ tipo: 'ping' }), 25000);
 
 elAvancar.addEventListener('click', () => enviar({ tipo: 'proxima' }));
-elAutoAvancar.addEventListener('change', () => enviar({ tipo: 'auto_avancar', ativo: elAutoAvancar.checked }));
 elSortear.addEventListener('click', () => enviar({ tipo: 'sortear' }));
 
 /* ===================== PLACAR ===================== */
@@ -188,16 +177,11 @@ function linhaPlacar(linha, rotuloPosicao, valor, modo) {
   const item = document.createElement('li');
   item.dataset.id = linha.id;
 
-  // nome do jogador e texto livre digitado por ele: sempre createTextNode, nunca interpolar em innerHTML
   const nome = document.createElement('span');
-  if (rotuloPosicao <= 3) nome.insertAdjacentHTML('beforeend', icone('award', 14, 'medalha medalha-' + rotuloPosicao));
-  else nome.appendChild(document.createTextNode(rotuloPosicao + '. '));
-  if (linha.avatar) nome.appendChild(document.createTextNode(' ' + linha.avatar + ' '));
-  nome.appendChild(document.createTextNode(linha.nome));
-  if (linha.sequencia >= 2) {
-    nome.insertAdjacentHTML('beforeend', ' ' + icone('flame', 14, 'chama'));
-    nome.appendChild(document.createTextNode(String(linha.sequencia)));
-  }
+  const medalha = { 1: '🥇 ', 2: '🥈 ', 3: '🥉 ' }[rotuloPosicao];
+  const avatar = linha.avatar ? linha.avatar + ' ' : '';
+  const fogo = linha.sequencia >= 2 ? ' 🔥' + linha.sequencia : '';
+  nome.textContent = (medalha || rotuloPosicao + '. ') + avatar + linha.nome + fogo;
 
   const ganho = document.createElement('span');
   ganho.className = 'ganho';
@@ -348,8 +332,7 @@ function desenharAlternativas(e) {
 }
 
 function desenharLobby(e) {
-  elTituloLobby.innerHTML = '<i data-lucide="users"></i> Na sala: ' + e.jogadores.length;
-  if (window.lucide) lucide.createIcons();
+  elTituloLobby.textContent = '👥 Na sala: ' + e.jogadores.length;
   elSortear.hidden = !modoDeTimes(e.modo);
   elLobby.innerHTML = '';
 
@@ -408,8 +391,6 @@ function desenhar(e) {
     location.href = '/painel';
     return;
   }
-
-  elAutoAvancar.checked = e.autoAvancar;
 
   if (e.estado === 'pergunta') elNumero.textContent = e.tituloTema + ', pergunta ' + e.numero + ' de ' + e.total;
   else if (e.estado === 'resultado') elNumero.textContent = e.tituloTema + ', resultado ' + e.numero + ' de ' + e.total;

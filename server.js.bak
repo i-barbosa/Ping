@@ -13,10 +13,10 @@ const jogo = require('./jogo');
 
 const PORTA = Number(process.env.PORT) || 3000;
 
-// no Render usa a URL publica fixa; local (ou fora do Render) cai na URL da propria requisicao
+// sempre hospedado: o dominio da propria requisicao e o unico endereco que existe
 function urlDeEntrada(req, pin) {
-  const base = (process.env.RENDER_EXTERNAL_URL || req.protocol + '://' + (req.get('host') || '')) + '/play';
-  return pin ? base + '?sala=' + pin : base;
+  const base = req.protocol + '://' + (req.get('host') || '') + '/play';
+  return pin ? base + '?pin=' + pin : base;
 }
 
 /* ===================== HTTP ===================== */

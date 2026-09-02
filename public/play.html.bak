@@ -18,26 +18,20 @@
   </head>
   <body>
     <section id="entrada">
-      <div id="tela-pin" class="entrada-card">
-        <img class="logo" src="/img/ping-logo.png" alt="Ping" />
-        <p class="subtitulo">Digite o PIN da sala, ou escaneie o QR code do professor</p>
+      <div class="entrada-card">
+        <img id="marca" class="logo" src="/img/ping-logo.png" alt="Ping" />
+        <p class="subtitulo">Digite o PIN da sala e seu nome</p>
         <label for="pin" class="rotulo-nome">PIN da sala</label>
         <input
           id="pin"
           maxlength="6"
+          inputmode="numeric"
+          pattern="[0-9]*"
           autocomplete="off"
           autocorrect="off"
-          autocapitalize="characters"
           spellcheck="false"
-          enterkeyhint="go"
-          placeholder="Ex: ABC123"
+          placeholder="Ex: 123456"
         />
-        <p id="aviso-pin" class="aviso-sala" hidden>PIN não encontrado, confira e tenta de novo</p>
-        <button id="continuar-pin" class="botao">Continuar</button>
-      </div>
-
-      <div id="tela-perfil" class="entrada-card" hidden>
-        <img class="logo" src="/img/ping-logo.png" alt="Ping" />
         <label for="nome" class="rotulo-nome">Seu nome</label>
         <input
           id="nome"
@@ -51,7 +45,7 @@
         />
         <p class="rotulo-nome">Seu avatar</p>
         <div id="avatares" class="avatares"></div>
-        <p id="aviso-sala" class="aviso-sala" hidden>A sala ainda não foi aberta, aguardando o professor…</p>
+        <p id="aviso-sala" class="aviso-sala" hidden>Confira o PIN — sala não encontrada ou ainda não foi aberta…</p>
         <button id="entrar" class="botao">Entrar</button>
       </div>
     </section>
@@ -71,8 +65,6 @@
       </footer>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/lucide@1.39.0/dist/umd/lucide.js"></script>
-    <script src="/js/icones.js"></script>
     <script src="/js/play.js"></script>
   </body>
 </html>

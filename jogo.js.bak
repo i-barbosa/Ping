@@ -20,13 +20,10 @@ const LEITURA_MS_POR_CARACTERE = 60;
 const RESULTADO_MS = 5000;
 
 const TAMANHO_PIN = 6;
-// sem I/O/0/1: letra e numero parecido demais de longe, projetado, confunde o aluno digitando
-const CARACTERES_PIN = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
 
 // mesma lista no play.js pro seletor; aqui so valida o que chega
 const AVATARES = ['🦊', '🐼', '🐸', '🐵', '🐨', '🦁', '🐯', '🐰', '🐺', '🦄', '🐙', '🦖', '🐧', '🦉', '🐝', '🦋', '🐳', '🐢', '🐲', '👾', '🤖', '👻', '🐔', '🐴'];
-// nome do icone lucide (renderizado no play.js/host.js via lucide.createIcons()), nao emoji
-const ICONES_REACAO = ['thumbs-up', 'heart', 'smile', 'star', 'zap', 'party-popper'];
+const EMOJIS_REACAO = ['👍', '❤️', '😂', '😮', '🔥', '👏'];
 const REACAO_INTERVALO_MS = 1200; // trava spam de reacao por jogador
 
 // duo e squad tem tamanho de time fixo; a quantidade de times e calculada de quem esta na sala
@@ -54,11 +51,11 @@ function enviar(ws, dados) {
 const salas = new Map(); // pin -> sala
 const salaDoProfessor = new Map(); // professorId -> pin
 
-// pin alfanumerico curto tipo ABC123, cabe na tela e da pra escrever na lousa
+// PIN numerico curto, facil de ditar em voz alta pra turma
 function gerarPin() {
   let pin;
   do {
-    pin = Array.from({ length: TAMANHO_PIN }, () => CARACTERES_PIN[crypto.randomInt(0, CARACTERES_PIN.length)]).join('');
+    pin = String(crypto.randomInt(0, 10 ** TAMANHO_PIN)).padStart(TAMANHO_PIN, '0');
   } while (salas.has(pin));
   return pin;
 }
@@ -77,9 +74,8 @@ function criarSala(professorId) {
     indice: -1,
     abertaEm: 0,
     leituraAte: 0, // timestamp em que a leitura acaba e as alternativas aparecem
-    perguntaAte: 0, // timestamp em que a pergunta fecha sozinha, 0 se auto-avancar desligado
-    resultadoAte: 0, // timestamp em que a proxima pergunta abre sozinha, 0 se auto-avancar desligado
-    autoAvancar: true // host pode desligar e voltar a avançar so no clique
+    perguntaAte: 0, // timestamp em que a pergunta fecha sozinha
+    resultadoAte: 0 // timestamp em que a proxima pergunta abre sozinha
   };
 
   let timerLeitura = null;
@@ -211,7 +207,6 @@ function criarSala(professorId) {
     return {
       pin,
       estado: jogo.estado,
-      autoAvancar: jogo.autoAvancar,
       modo: jogo.modo,
       equipes: jogo.equipes,
       equipesPlacar: placarEquipes(),
@@ -357,15 +352,10 @@ function criarSala(professorId) {
     jogo.leituraAte = 0;
     jogo.abertaEm = Date.now();
     const p = perguntaAtual();
-    clearTimeout(timerPergunta);
-    timerPergunta = null;
-    if (jogo.autoAvancar) {
-      jogo.perguntaAte = jogo.abertaEm + p.tempo * 1000;
-      timerPergunta = setTimeout(fecharPergunta, p.tempo * 1000);
-    } else {
-      jogo.perguntaAte = 0;
-    }
+    jogo.perguntaAte = jogo.abertaEm + p.tempo * 1000;
     transmitir();
+    clearTimeout(timerPergunta);
+    timerPergunta = setTimeout(fecharPergunta, p.tempo * 1000);
   }
 
   function fecharPergunta() {
@@ -383,15 +373,10 @@ function criarSala(professorId) {
       }
     });
     jogo.estado = 'resultado';
-    clearTimeout(timerResultado);
-    timerResultado = null;
-    if (jogo.autoAvancar) {
-      jogo.resultadoAte = Date.now() + RESULTADO_MS;
-      timerResultado = setTimeout(abrirPergunta, RESULTADO_MS);
-    } else {
-      jogo.resultadoAte = 0;
-    }
+    jogo.resultadoAte = Date.now() + RESULTADO_MS;
     transmitir();
+    clearTimeout(timerResultado);
+    timerResultado = setTimeout(abrirPergunta, RESULTADO_MS);
   }
 
   // volta pro comeco sem reiniciar o servico, e libera trocar de tema
@@ -449,32 +434,6 @@ function criarSala(professorId) {
         j.eliminado = false; // troca de modo comeca do zero
         j.equipe = null;
       });
-      transmitir();
-      return;
-    }
-
-    if (msg.tipo === 'auto_avancar') {
-      if (!hosts.has(ws)) return;
-      jogo.autoAvancar = !!msg.ativo;
-      if (jogo.autoAvancar) {
-        // religou no meio da rodada: reaproveita o prazo que ja estava correndo, ou abre um novo pro resultado
-        if (jogo.estado === 'pergunta' && !timerPergunta) {
-          const p = perguntaAtual();
-          const restante = Math.max(0, jogo.abertaEm + p.tempo * 1000 - Date.now());
-          jogo.perguntaAte = Date.now() + restante;
-          timerPergunta = setTimeout(fecharPergunta, restante);
-        } else if (jogo.estado === 'resultado' && !timerResultado) {
-          jogo.resultadoAte = Date.now() + RESULTADO_MS;
-          timerResultado = setTimeout(abrirPergunta, RESULTADO_MS);
-        }
-      } else {
-        clearTimeout(timerPergunta);
-        clearTimeout(timerResultado);
-        timerPergunta = null;
-        timerResultado = null;
-        jogo.perguntaAte = 0;
-        jogo.resultadoAte = 0;
-      }
       transmitir();
       return;
     }
@@ -585,11 +544,11 @@ function criarSala(professorId) {
     if (msg.tipo === 'reacao') {
       const j = jogadores.get(ws.idJogador);
       if (!j || !online(j)) return;
-      if (!ICONES_REACAO.includes(msg.icone)) return;
+      if (!EMOJIS_REACAO.includes(msg.emoji)) return;
       const agora = Date.now();
       if (agora - j.ultimaReacao < REACAO_INTERVALO_MS) return;
       j.ultimaReacao = agora;
-      const evento = { tipo: 'reacao', icone: msg.icone, nome: j.nome };
+      const evento = { tipo: 'reacao', emoji: msg.emoji, nome: j.nome };
       hosts.forEach((h) => enviar(h, evento));
       return;
     }
@@ -610,7 +569,6 @@ function criarSala(professorId) {
 
   function entrarHost(ws) {
     hosts.add(ws);
-    enviar(ws, { tipo: 'sala_criada', pin });
     enviar(ws, estadoHost());
   }
 
@@ -679,10 +637,10 @@ function configurarWebSocket(wss) {
       if (!ws.sala) {
         // so entrar_jogador pode abrir sala pra uma conexao ainda sem sala: o pin decide qual
         if (msg.tipo !== 'entrar_jogador') return;
-        const pin = String(msg.sala || '').trim().toUpperCase();
+        const pin = String(msg.pin || '').trim();
         const sala = salas.get(pin);
         if (!sala) {
-          enviar(ws, { tipo: 'sala_nao_existe' });
+          enviar(ws, { tipo: 'sala_fechada' });
           return;
         }
         ws.sala = sala;

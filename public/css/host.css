@@ -201,6 +201,31 @@ body {
   margin-bottom: 1px;
 }
 
+.medalha-1 {
+  color: #ffc72c;
+}
+
+.medalha-2 {
+  color: #c7c9cc;
+}
+
+.medalha-3 {
+  color: #d08a4d;
+}
+
+.chama {
+  color: #ff7a1a;
+}
+
+.cabecalho-lobby #pin-sala {
+  margin: 2px 0 0;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #111;
+  text-align: left;
+}
+
 .direita {
   display: flex;
   align-items: center;

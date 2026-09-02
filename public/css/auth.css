@@ -77,7 +77,15 @@ body {
 }
 
 .subtitulo::before {
-  content: "🎓 ";
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  vertical-align: -2px;
+  background-color: currentColor;
+  mask: url("/img/icons/graduation-cap.svg") no-repeat center / contain;
+  -webkit-mask: url("/img/icons/graduation-cap.svg") no-repeat center / contain;
 }
 
 .abas {

@@ -25,7 +25,11 @@ async function carregarEu() {
   try {
     const resposta = await fetch('/api/eu');
     const eu = await resposta.json();
-    if (resposta.ok) elSaudacao.textContent = 'Olá, ' + eu.nome + ' 👋';
+    if (resposta.ok) {
+      elSaudacao.textContent = ''; // nome do professor e texto livre, sempre por createTextNode
+      elSaudacao.appendChild(document.createTextNode('Olá, ' + eu.nome + ' '));
+      elSaudacao.insertAdjacentHTML('beforeend', icone('hand', 18));
+    }
     if (eu.admin) elCardAdmin.hidden = false;
   } catch (erro) {
     console.error(erro);
@@ -48,7 +52,7 @@ function montarCirculo(tema, aoClicar) {
   if (tema.status === 'pendente') {
     const selo = document.createElement('span');
     selo.className = 'tema-selo-pendente';
-    selo.textContent = '⏳';
+    selo.innerHTML = icone('hourglass', 12);
     bola.appendChild(selo);
   }
   item.appendChild(bola);

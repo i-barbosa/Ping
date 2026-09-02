@@ -1,15 +1,11 @@
 const letras = ['A', 'B', 'C', 'D', 'E', 'F'];
 const AVATARES = ['🦊', '🐼', '🐸', '🐵', '🐨', '🦁', '🐯', '🐰', '🐺', '🦄', '🐙', '🦖', '🐧', '🦉', '🐝', '🦋', '🐳', '🐢', '🐲', '👾', '🤖', '👻', '🐔', '🐴'];
-const ICONES_REACAO = ['thumbs-up', 'heart', 'smile', 'star', 'zap', 'party-popper'];
+const EMOJIS_REACAO = ['👍', '❤️', '😂', '😮', '🔥', '👏'];
 
 const el = (id) => document.getElementById(id);
 const elEntrada = el('entrada');
 const elJogo = el('jogo');
-const elTelaPin = el('tela-pin');
-const elTelaPerfil = el('tela-perfil');
 const elPin = el('pin');
-const elContinuarPin = el('continuar-pin');
-const elAvisoPin = el('aviso-pin');
 const elNome = el('nome');
 const elAvatares = el('avatares');
 const elAvisoSala = el('aviso-sala');
@@ -39,12 +35,9 @@ if (!id) {
 // token secreto, separado do id; so o servidor entrega, prova posse pra reconectar sem deixar outro roubar o id
 let token = sessionStorage.getItem('ping_token') || '';
 
-// pin vem do link/qr (?sala=) ou de uma sessao anterior; some do campo se ja veio pronto
-function normalizarPin(bruto) {
-  return String(bruto || '').replace(/[^a-z0-9]/gi, '').toUpperCase().slice(0, 6);
-}
-const pinDaUrl = new URLSearchParams(location.search).get('sala');
-let pin = normalizarPin(pinDaUrl || sessionStorage.getItem('ping_pin'));
+// pin vem do link/qr (?pin=) ou de uma sessao anterior; some do campo se ja veio pronto
+const pinDaUrl = new URLSearchParams(location.search).get('pin');
+let pin = (pinDaUrl || sessionStorage.getItem('ping_pin') || '').replace(/\D/g, '').slice(0, 6);
 if (pin) elPin.value = pin;
 
 let nome = sessionStorage.getItem('ping_nome') || '';
@@ -55,24 +48,9 @@ let apostaPct = 0;
 let apostaMarca = '';
 let ultimoSom = '';
 
-// pin ja resolvido (veio do QR ou de sessao anterior): pula a tela de digitar codigo
-function mostrarTelaPin() {
-  elTelaPin.hidden = false;
-  elTelaPerfil.hidden = true;
-}
-
-function mostrarTelaPerfil() {
-  elTelaPin.hidden = true;
-  elTelaPerfil.hidden = false;
-}
-
 if (nome && pin) {
   elEntrada.hidden = true;
   elJogo.hidden = false;
-} else if (pin) {
-  mostrarTelaPerfil();
-} else {
-  mostrarTelaPin();
 }
 
 /* ===================== SOM ===================== */
@@ -139,13 +117,13 @@ montarAvatares();
 
 function montarReacoes() {
   elReacoesJogador.innerHTML = '';
-  ICONES_REACAO.forEach((nomeIcone) => {
+  EMOJIS_REACAO.forEach((emoji) => {
     const botao = document.createElement('button');
     botao.type = 'button';
     botao.className = 'reacao-botao';
-    botao.innerHTML = '<i data-lucide="' + nomeIcone + '"></i>';
+    botao.textContent = emoji;
     botao.addEventListener('click', () => {
-      if (ws && ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify({ tipo: 'reacao', icone: nomeIcone }));
+      if (ws && ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify({ tipo: 'reacao', emoji: emoji }));
       botao.disabled = true;
       setTimeout(() => {
         botao.disabled = false;
@@ -153,7 +131,6 @@ function montarReacoes() {
     });
     elReacoesJogador.appendChild(botao);
   });
-  if (window.lucide) lucide.createIcons();
 }
 
 montarReacoes();
@@ -162,35 +139,16 @@ montarReacoes();
 
 function entrar() {
   if (ws && ws.readyState === WebSocket.OPEN && nome && pin) {
-    ws.send(JSON.stringify({ tipo: 'entrar_jogador', sala: pin, id: id, nome: nome, avatar: avatar, token: token }));
+    ws.send(JSON.stringify({ tipo: 'entrar_jogador', pin: pin, id: id, nome: nome, avatar: avatar, token: token }));
   }
 }
 
-function pararRetentativa() {
-  if (tentandoEntrar) {
-    clearInterval(tentandoEntrar);
-    tentandoEntrar = null;
-  }
-}
-
-// sala existe mas o professor ainda nao apertou iniciar: pin ta certo, fica esperando na tela de perfil
+// sala ainda nao foi criada: volta pra entrada e tenta de novo sozinho ate o professor criar
 function salaFechada() {
   elJogo.hidden = true;
   elEntrada.hidden = false;
-  mostrarTelaPerfil();
   elAvisoSala.hidden = false;
   if (!tentandoEntrar) tentandoEntrar = setInterval(entrar, 3000);
-}
-
-// pin nao bate com nenhuma sala: nao adianta insistir sozinho, volta pra tela de digitar o codigo
-function salaNaoExiste() {
-  pararRetentativa();
-  pin = '';
-  sessionStorage.removeItem('ping_pin');
-  elJogo.hidden = true;
-  elEntrada.hidden = false;
-  mostrarTelaPin();
-  elAvisoPin.hidden = false;
 }
 
 function conectar() {
@@ -206,10 +164,6 @@ function conectar() {
       const dados = JSON.parse(evento.data);
       if (dados.tipo === 'sala_fechada') {
         salaFechada();
-        return;
-      }
-      if (dados.tipo === 'sala_nao_existe') {
-        salaNaoExiste();
         return;
       }
       desenhar(dados);
@@ -238,36 +192,24 @@ document.addEventListener('visibilitychange', () => {
   if (!document.hidden && ws && ws.readyState === WebSocket.CLOSED) conectar();
 });
 
-function confirmarPin() {
-  const pinDigitado = normalizarPin(elPin.value);
-  elAvisoPin.hidden = true;
-  if (pinDigitado.length !== 6) {
-    texto(elAvisoPin, 'PIN precisa ter 6 caracteres');
-    elAvisoPin.hidden = false;
-    return;
-  }
-  pin = pinDigitado;
-  sessionStorage.setItem('ping_pin', pin);
-  mostrarTelaPerfil();
-  elNome.focus();
-}
-
 function confirmarNome() {
   const digitado = elNome.value.trim();
-  if (!digitado || !pin) return;
+  const pinDigitado = elPin.value.replace(/\D/g, '').slice(0, 6);
+  if (!digitado || pinDigitado.length !== 6) return;
   nome = digitado;
+  pin = pinDigitado;
   sessionStorage.setItem('ping_nome', nome);
+  sessionStorage.setItem('ping_pin', pin);
   elEntrada.hidden = true;
   elJogo.hidden = false;
   entrar();
 }
 
-elContinuarPin.addEventListener('click', confirmarPin);
-elPin.addEventListener('keydown', (evento) => {
-  if (evento.key === 'Enter') confirmarPin();
-});
 elEntrar.addEventListener('click', confirmarNome);
 elNome.addEventListener('keydown', (evento) => {
+  if (evento.key === 'Enter') confirmarNome();
+});
+elPin.addEventListener('keydown', (evento) => {
   if (evento.key === 'Enter') confirmarNome();
 });
 
@@ -351,11 +293,10 @@ function desenhar(e) {
     texto(elAviso, 'Aguarde o início');
   }
 
-  // equipe vem fixo do host (Dupla/Squad + numero), nunca texto livre; nome do jogador fica de fora, so em texto()
   const partes = [];
   if (e.total > 0 && e.estado !== 'aguardando') partes.push(e.posicao + ' de ' + e.total);
   if (e.equipe) partes.push(e.equipe);
-  if (e.sequencia > 1) partes.push(icone('flame', 14, 'chama') + ' ' + e.sequencia);
-  elPosicao.innerHTML = partes.join('   ');
+  if (e.sequencia > 1) partes.push('🔥 ' + e.sequencia);
+  texto(elPosicao, partes.join('   '));
   texto(elPontos, e.nome + ': ' + e.pontos + ' pontos');
 }

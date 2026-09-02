@@ -63,7 +63,15 @@ body {
 }
 
 .titulo-pagina::before {
-  content: "📝 ";
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: -3px;
+  background-color: currentColor;
+  mask: url("/img/icons/square-pen.svg") no-repeat center / contain;
+  -webkit-mask: url("/img/icons/square-pen.svg") no-repeat center / contain;
 }
 
 #palco {
@@ -125,12 +133,25 @@ h2 {
   margin-top: 8px;
 }
 
+#form-tema h2::before,
+#meus-temas h2::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: -3px;
+  background-color: currentColor;
+}
+
 #form-tema h2::before {
-  content: "❓ ";
+  mask: url("/img/icons/circle-help.svg") no-repeat center / contain;
+  -webkit-mask: url("/img/icons/circle-help.svg") no-repeat center / contain;
 }
 
 #meus-temas h2::before {
-  content: "📚 ";
+  mask: url("/img/icons/book-open.svg") no-repeat center / contain;
+  -webkit-mask: url("/img/icons/book-open.svg") no-repeat center / contain;
 }
 
 .pergunta-card {
@@ -171,8 +192,13 @@ h2 {
 }
 
 .pergunta-numero::before {
-  content: "✏️";
-  font-size: 15px;
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: currentColor;
+  mask: url("/img/icons/pencil.svg") no-repeat center / contain;
+  -webkit-mask: url("/img/icons/pencil.svg") no-repeat center / contain;
 }
 
 .remover-pergunta {

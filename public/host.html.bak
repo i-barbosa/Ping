@@ -37,7 +37,7 @@
     <main id="palco">
       <section id="abertura">
         <div id="sala">
-          <h2 id="titulo-lobby"><i data-lucide="users"></i> Na sala: 0</h2>
+          <h2 id="titulo-lobby">👥 Na sala: 0</h2>
           <button type="button" id="sortear" class="tema" hidden>Sortear times</button>
           <ul id="lobby" class="lobby"></ul>
         </div>
@@ -61,17 +61,11 @@
 
     <footer class="barra rodape">
       <span id="contador">0 de 0 responderam</span>
-      <label id="auto-avancar-label">
-        <input type="checkbox" id="auto-avancar" checked />
-        Auto-avançar perguntas
-      </label>
       <button id="avancar" class="botao">Iniciar</button>
     </footer>
 
     <div id="reacoes" aria-hidden="true"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/lucide@1.39.0/dist/umd/lucide.js"></script>
-    <script src="/js/icones.js"></script>
     <script src="/js/host.js"></script>
   </body>
 </html>

@@ -164,7 +164,11 @@ async function excluirTema(id) {
   }
 }
 
-const rotuloStatus = { pendente: '⏳ Em revisão', aprovado: '✅ Aprovado', rejeitado: '❌ Rejeitado' };
+const rotuloStatus = {
+  pendente: icone('hourglass', 13) + ' Em revisão',
+  aprovado: icone('circle-check', 13) + ' Aprovado',
+  rejeitado: icone('circle-x', 13) + ' Rejeitado'
+};
 
 async function carregarMeusTemas() {
   try {
@@ -176,9 +180,11 @@ async function carregarMeusTemas() {
         const item = document.createElement('li');
         item.className = 'status-' + t.status;
 
+        // titulo do tema e texto livre do professor: fica em createTextNode, o rotulo de status (fixo) vai em innerHTML
         const nome = document.createElement('span');
         nome.className = 'meu-tema-nome';
-        nome.textContent = t.titulo + ', ' + t.total + ' perguntas — ' + (rotuloStatus[t.status] || t.status);
+        nome.appendChild(document.createTextNode(t.titulo + ', ' + t.total + ' perguntas — '));
+        nome.insertAdjacentHTML('beforeend', rotuloStatus[t.status] || t.status);
         item.appendChild(nome);
 
         const botoes = document.createElement('span');

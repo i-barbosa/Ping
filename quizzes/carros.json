@@ -1,0 +1,214 @@
+{
+  "titulo": "Carros",
+  "descricao": "Perguntas sobre carros, motores, componentes, marcas e conhecimentos basicos de automoveis.",
+  "perguntas": [
+    {
+      "id": 1,
+      "enunciado": "Qual é a função principal do motor de um carro?",
+      "alternativas": [
+        "Controlar o radio",
+        "Frear o carro",
+        "Gerar energia para movimentar o carro",
+        "Resfriar os pneus"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 2,
+      "enunciado": "Qual combustível é comumente usado em carros com motores a gasolina?",
+      "alternativas": [
+        "Oleo de cozinha",
+        "Gasolina",
+        "Fluido de freio",
+        "Agua"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 3,
+      "enunciado": "O que significa ABS em um carro?",
+      "alternativas": [
+        "Controle automatico do motor",
+        "Sistema de seguranca dos pneus",
+        "Sistema automatico de combustivel",
+        "Sistema antitravamento dos freios"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 4,
+      "enunciado": "Qual é a função do cinto de segurança?",
+      "alternativas": [
+        "Economizar combustivel",
+        "Proteger os ocupantes em caso de acidente",
+        "Melhorar o som do carro",
+        "Aumentar a velocidade"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 5,
+      "enunciado": "Para que serve o óleo do motor?",
+      "alternativas": [
+        "Aumentar o tamanho do motor",
+        "Encher os pneus",
+        "Lubrificar e proteger as pecas do motor",
+        "Limpar os vidros"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 6,
+      "enunciado": "Qual destes é um carro esportivo conhecido?",
+      "alternativas": [
+        "Caminhao",
+        "Ferrari",
+        "Trator",
+        "Onibus"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 7,
+      "enunciado": "Qual empresa fabrica o Mustang?",
+      "alternativas": [
+        "Honda",
+        "Volkswagen",
+        "Toyota",
+        "Ford"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 8,
+      "enunciado": "O que significa SUV?",
+      "alternativas": [
+        "Um modelo de pneu",
+        "Um tipo de combustivel",
+        "Um tipo de veiculo utilitario esportivo",
+        "Um sistema de freios"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 9,
+      "enunciado": "Para que serve o câmbio de um carro?",
+      "alternativas": [
+        "Acionar os airbags",
+        "Controlar os farois",
+        "Resfriar o motor",
+        "Alterar as relacoes de marcha"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 10,
+      "enunciado": "Qual componente ajuda a reduzir os impactos e balanços do carro?",
+      "alternativas": [
+        "Radiador",
+        "Amortecedor",
+        "Escapamento",
+        "Bateria"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 11,
+      "enunciado": "Qual destes carros é conhecido por ser um modelo da Volkswagen?",
+      "alternativas": [
+        "Mustang",
+        "Corolla",
+        "Golf",
+        "Civic"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 12,
+      "enunciado": "Qual marca produz o modelo Camaro?",
+      "alternativas": [
+        "Hyundai",
+        "Chevrolet",
+        "Toyota",
+        "Honda"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 13,
+      "enunciado": "O que significa a sigla RPM?",
+      "alternativas": [
+        "Regulagem de potencia mecanica",
+        "Rotacao de potencia maxima",
+        "Rotacoes por minuto",
+        "Relacao de pressao do motor"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 14,
+      "enunciado": "Qual componente é responsável por produzir a faísca em muitos motores a gasolina?",
+      "alternativas": [
+        "Alternador",
+        "Vela de ignicao",
+        "Radiador",
+        "Amortecedor"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 15,
+      "enunciado": "Para que serve o alternador?",
+      "alternativas": [
+        "Controlar o sistema de freios",
+        "Resfriar os pneus",
+        "Gerar energia eletrica enquanto o motor funciona e ajudar a recarregar a bateria",
+        "Aumentar a potencia do motor"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 16,
+      "enunciado": "Qual destes é um carro híbrido?",
+      "alternativas": [
+        "Volkswagen Fusca",
+        "Chevrolet Opala",
+        "Ford Mustang classico",
+        "Toyota Prius"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    }
+  ]
+}

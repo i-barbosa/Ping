@@ -1,5 +1,7 @@
 # Ping
 
+https://ping-gg26.onrender.com
+
 Quiz ao vivo para sala de aula. O professor projeta a tela do host, os alunos entram pelo celular lendo um QR code e respondem em botões grandes e coloridos. Acerto pontua, quem responde mais rápido pontua mais.
 
 Alternativa livre ao Kahoot: sem licença paga, sem limite de participantes. O aluno entra sem conta, só com nome e avatar; o professor precisa de login pra abrir a sala.

@@ -1,0 +1,240 @@
+{
+  "titulo": "Logica de Programacao em C - Nivel Dificil",
+  "descricao": "Perguntas de nivel dificil sobre logica de programacao, arrays, ponteiros, funcoes, recursao e interpretacao de codigo em C.",
+  "perguntas": [
+    {
+      "id": 1,
+      "enunciado": "Qual será a saída do código?\n\nint a = 5;\nint b = 2;\n\nprintf(\"%d\", a / b);",
+      "alternativas": [
+        "3",
+        "1",
+        "2.5",
+        "2"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 2,
+      "enunciado": "Qual será a saída do código?\n\nint x = 5;\n\nprintf(\"%d\", x++ + ++x);",
+      "alternativas": [
+        "O comportamento é indefinido",
+        "11",
+        "10",
+        "12"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 3,
+      "enunciado": "Qual será o valor final de soma?\n\nint soma = 0;\n\nfor (int i = 1; i <= 5; i++) {\n    if (i % 2 == 0) {\n        soma += i;\n    }\n}",
+      "alternativas": [
+        "5",
+        "15",
+        "9",
+        "6"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 4,
+      "enunciado": "Qual será a saída do código?\n\nint vetor[] = {10, 20, 30, 40, 50};\n\nprintf(\"%d\", vetor[2]);",
+      "alternativas": [
+        "40",
+        "10",
+        "30",
+        "20"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 5,
+      "enunciado": "Em C, qual é o índice do primeiro elemento de um array?",
+      "alternativas": [
+        "-1",
+        "1",
+        "Depende do tamanho do array",
+        "0"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 6,
+      "enunciado": "Qual será a saída do código?\n\nint vetor[] = {2, 4, 6, 8};\n\nfor (int i = 0; i < 4; i++) {\n    vetor[i] = vetor[i] * 2;\n}\n\nprintf(\"%d\", vetor[3]);",
+      "alternativas": [
+        "10",
+        "16",
+        "12",
+        "8"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 7,
+      "enunciado": "Qual será a saída do código?\n\nint matriz[2][2] = {\n    {1, 2},\n    {3, 4}\n};\n\nprintf(\"%d\", matriz[1][0]);",
+      "alternativas": [
+        "4",
+        "2",
+        "3",
+        "1"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 8,
+      "enunciado": "Qual será a saída do código?\n\nvoid alterar(int *x) {\n    *x = 20;\n}\n\nint main() {\n    int numero = 10;\n\n    alterar(&numero);\n\n    printf(\"%d\", numero);\n    return 0;\n}",
+      "alternativas": [
+        "Endereço de numero",
+        "0",
+        "10",
+        "20"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 9,
+      "enunciado": "O que o operador & faz em &numero nesse contexto?\n\nint numero = 10;\nint *ptr = &numero;",
+      "alternativas": [
+        "Cria uma nova variável",
+        "Obtém o valor armazenado em numero",
+        "Multiplica numero",
+        "Obtém o endereço de memória de numero"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 10,
+      "enunciado": "O que o operador * faz quando utilizado para acessar um ponteiro?\n\nint numero = 10;\nint *ptr = &numero;\n\nprintf(\"%d\", *ptr);",
+      "alternativas": [
+        "Acessa o valor armazenado no endereço apontado por ptr",
+        "Remove o ponteiro da memória",
+        "Obtém o endereço de numero",
+        "Multiplica o ponteiro"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 11,
+      "enunciado": "O que a função abaixo retorna quando n recebe o valor 4?\n\nint fatorial(int n) {\n    if (n == 0) {\n        return 1;\n    }\n\n    return n * fatorial(n - 1);\n}\n\nprintf(\"%d\", fatorial(4));",
+      "alternativas": [
+        "16",
+        "12",
+        "4",
+        "24"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 12,
+      "enunciado": "Qual será a saída do código?\n\nchar nome[] = \"C\";\n\nprintf(\"%c\", nome[0]);",
+      "alternativas": [
+        "0",
+        "C",
+        "\"C\"",
+        "c"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 13,
+      "enunciado": "Qual função da biblioteca padrão é utilizada para obter o tamanho de uma string?",
+      "alternativas": [
+        "strsize()",
+        "strlen()",
+        "length()",
+        "size()"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 14,
+      "enunciado": "Qual será a saída do código?\n\nchar texto[] = \"ABC\";\n\nprintf(\"%d\", strlen(texto));",
+      "alternativas": [
+        "4",
+        "0",
+        "3",
+        "2"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 15,
+      "enunciado": "Qual será o valor final de contador?\n\nint contador = 0;\n\nfor (int i = 0; i < 3; i++) {\n    for (int j = 0; j < 3; j++) {\n        contador++;\n    }\n}",
+      "alternativas": [
+        "12",
+        "6",
+        "3",
+        "9"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 16,
+      "enunciado": "Qual será a saída do código?\n\nint x = 10;\nint *p = &x;\n\n*p = 30;\n\nprintf(\"%d\", x);",
+      "alternativas": [
+        "30",
+        "10",
+        "Endereço de x",
+        "20"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 17,
+      "enunciado": "Qual será o resultado da função?\n\nint maior(int a, int b) {\n    if (a > b) {\n        return a;\n    }\n\n    return b;\n}\n\nprintf(\"%d\", maior(15, 9));",
+      "alternativas": [
+        "24",
+        "6",
+        "9",
+        "15"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": false
+    },
+    {
+      "id": 18,
+      "enunciado": "Qual será a saída do código?\n\nint x = 1;\n\nfor (int i = 0; i < 5; i++) {\n    x *= 2;\n}\n\nprintf(\"%d\", x);",
+      "alternativas": [
+        "64",
+        "32",
+        "16",
+        "10"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": false
+    }
+  ]
+}

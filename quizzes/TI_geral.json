@@ -1,0 +1,266 @@
+{
+  "titulo": "Tecnologia da Informacao",
+  "descricao": "Quiz com perguntas sobre programacao, desenvolvimento web, banco de dados, redes, hardware, seguranca e conceitos gerais de TI.",
+  "perguntas": [
+    {
+      "id": 1,
+      "enunciado": "Qual e a principal funcao de uma variavel em programacao?",
+      "alternativas": [
+        "Armazenar dados",
+        "Criar uma rede",
+        "Apagar arquivos",
+        "Instalar programas"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 2,
+      "enunciado": "Qual linguagem e executada diretamente pelos navegadores para adicionar interatividade a paginas web?",
+      "alternativas": [
+        "Java",
+        "JavaScript",
+        "C",
+        "SQL"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 3,
+      "enunciado": "Qual tecnologia e utilizada principalmente para estruturar o conteudo de uma pagina web?",
+      "alternativas": [
+        "CSS",
+        "SQL",
+        "HTML",
+        "Python"
+      ],
+      "correta": 2,
+      "tempo": 15,
+      "dobro": true
+    },
+    {
+      "id": 4,
+      "enunciado": "Qual tecnologia e utilizada principalmente para estilizar paginas web?",
+      "alternativas": [
+        "HTML",
+        "Java",
+        "MySQL",
+        "CSS"
+      ],
+      "correta": 3,
+      "tempo": 15,
+      "dobro": true
+    },
+    {
+      "id": 5,
+      "enunciado": "Qual estrutura permite que um programa tome decisoes com base em uma condicao?",
+      "alternativas": [
+        "import",
+        "if",
+        "print",
+        "return"
+      ],
+      "correta": 1,
+      "tempo": 15,
+      "dobro": true
+    },
+    {
+      "id": 6,
+      "enunciado": "Qual estrutura de programacao permite executar um bloco de codigo varias vezes?",
+      "alternativas": [
+        "Variavel",
+        "Funcao",
+        "Laco de repeticao",
+        "Classe CSS"
+      ],
+      "correta": 2,
+      "tempo": 15,
+      "dobro": true
+    },
+    {
+      "id": 7,
+      "enunciado": "O que e uma funcao em programacao?",
+      "alternativas": [
+        "Um tipo de banco de dados",
+        "Um componente de hardware",
+        "Um protocolo de rede",
+        "Um bloco reutilizavel de codigo"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 8,
+      "enunciado": "O que significa Front-End no desenvolvimento de software?",
+      "alternativas": [
+        "Parte responsavel pela interface com o usuario",
+        "Parte responsavel apenas pelo banco de dados",
+        "Componente fisico do servidor",
+        "Sistema de seguranca da rede"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 9,
+      "enunciado": "O que significa Back-End no desenvolvimento web?",
+      "alternativas": [
+        "Apenas o design visual",
+        "A tela exibida para o usuario",
+        "A parte que executa logica, regras de negocio e acesso a dados",
+        "Somente os arquivos CSS"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 10,
+      "enunciado": "O que e uma API?",
+      "alternativas": [
+        "Um componente fisico",
+        "Uma interface que permite a comunicacao entre sistemas",
+        "Um tipo de memoria",
+        "Um editor de codigo"
+      ],
+      "correta": 1,
+      "tempo": 25,
+      "dobro": true
+    },
+    {
+      "id": 11,
+      "enunciado": "Qual linguagem e utilizada principalmente para realizar consultas em bancos de dados relacionais?",
+      "alternativas": [
+        "SQL",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 12,
+      "enunciado": "Qual comando SQL e normalmente utilizado para consultar dados de uma tabela?",
+      "alternativas": [
+        "DELETE",
+        "UPDATE",
+        "DROP",
+        "SELECT"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 13,
+      "enunciado": "Qual e a funcao de uma chave primaria em um banco de dados relacional?",
+      "alternativas": [
+        "Excluir automaticamente uma tabela",
+        "Identificar unicamente cada registro",
+        "Criptografar o banco",
+        "Conectar o computador a internet"
+      ],
+      "correta": 1,
+      "tempo": 25,
+      "dobro": true
+    },
+    {
+      "id": 14,
+      "enunciado": "Para que serve o Git?",
+      "alternativas": [
+        "Editar imagens",
+        "Criar bancos de dados",
+        "Controlar versoes de projetos",
+        "Executar consultas SQL"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 15,
+      "enunciado": "O que significa a sigla CPU?",
+      "alternativas": [
+        "Central Processing Unit",
+        "Computer Personal Unit",
+        "Central Program Utility",
+        "Control Processing User"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 16,
+      "enunciado": "Qual componente armazena temporariamente dados utilizados pelos programas em execucao?",
+      "alternativas": [
+        "SSD",
+        "Placa-mae",
+        "Fonte de alimentacao",
+        "Memoria RAM"
+      ],
+      "correta": 3,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 17,
+      "enunciado": "O que significa a sigla IP em redes de computadores?",
+      "alternativas": [
+        "Internal Program",
+        "Internet Program",
+        "Internet Protocol",
+        "Information Process"
+      ],
+      "correta": 2,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 18,
+      "enunciado": "Qual protocolo e utilizado normalmente para acessar paginas web de forma segura?",
+      "alternativas": [
+        "FTP",
+        "HTTPS",
+        "HTTP",
+        "SMTP"
+      ],
+      "correta": 1,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 19,
+      "enunciado": "O que e phishing?",
+      "alternativas": [
+        "Uma tecnica para enganar usuarios e obter informacoes",
+        "Uma linguagem de programacao",
+        "Um banco de dados",
+        "Um sistema operacional"
+      ],
+      "correta": 0,
+      "tempo": 20,
+      "dobro": true
+    },
+    {
+      "id": 20,
+      "enunciado": "Qual pratica ajuda a proteger uma conta contra acessos nao autorizados mesmo se a senha for descoberta?",
+      "alternativas": [
+        "Usar a mesma senha em todos os sites",
+        "Desativar atualizacoes",
+        "Compartilhar a senha com colegas",
+        "Ativar autenticacao em dois fatores"
+      ],
+      "correta": 3,
+      "tempo": 25,
+      "dobro": true
+    }
+  ]
+}

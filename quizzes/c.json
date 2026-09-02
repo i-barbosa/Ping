@@ -4,7 +4,7 @@
   "perguntas": [
     {
       "id": 1,
-      "enunciado": "Em qual função a execução de um programa em C é iniciada?",
+      "enunciado": "Em qual função a execução de um programa em C é iniciadaa?",
       "alternativas": ["start()", "main()", "init()", "run()"],
       "correta": 1,
       "tempo": 15

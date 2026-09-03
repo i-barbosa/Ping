@@ -85,13 +85,13 @@ Ping/
 ├── render.yaml
 ├── package.json
 ├── .env.example
+├── server.js
 ├── server/
 │   ├── db.js
 │   ├── auth.js
 │   ├── contas.js
 │   ├── temas.js
-│   ├── jogo.js
-│   └── server.js
+│   └── jogo.js
 ├── quizzes/
 │   ├── c.json
 │   ├── css.json

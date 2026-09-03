@@ -2,12 +2,12 @@
   "name": "ping",
   "version": "0.12.0",
   "private": true,
-  "main": "server/server.js",
+  "main": "server.js",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

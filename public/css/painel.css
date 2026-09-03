@@ -127,7 +127,24 @@ body {
 
 /* ===== TEMAS EM CIRCULO ===== */
 
+/* container vertical: uma linha por topico (Programacao, Historia, ...) */
 .temas-circulos {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.topico-titulo {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--apagado);
+  margin-bottom: 8px;
+}
+
+/* linha horizontal com os circulos de um topico; era o .temas-circulos antigo */
+.topico-linha {
   display: flex;
   gap: 20px;
   overflow-x: auto;
@@ -385,7 +402,7 @@ body {
   margin-bottom: 4px;
 }
 
-.bolha .temas-circulos {
+.bolha .topico-linha {
   padding-bottom: 2px;
 }
 

@@ -1,39 +1,65 @@
 {
   "titulo": "JavaScript",
   "descricao": "Sintaxe, variáveis e conceitos básicos da linguagem JavaScript.",
+  "topico": "Programação",
   "perguntas": [
     {
       "id": 1,
       "enunciado": "Qual palavra-chave é usada para declarar uma constante em JavaScript?",
-      "alternativas": ["var", "let", "const", "static"],
+      "alternativas": [
+        "var",
+        "let",
+        "const",
+        "static"
+      ],
       "correta": 2,
       "tempo": 15
     },
     {
       "id": 2,
       "enunciado": "Qual método adiciona um elemento ao final de um array?",
-      "alternativas": ["push()", "pop()", "shift()", "unshift()"],
+      "alternativas": [
+        "push()",
+        "pop()",
+        "shift()",
+        "unshift()"
+      ],
       "correta": 0,
       "tempo": 15
     },
     {
       "id": 3,
       "enunciado": "Como você escreve um comentário de uma linha em JavaScript?",
-      "alternativas": ["<!-- Comentário -->", "/* Comentário */", "// Comentário", "** Comentário **"],
+      "alternativas": [
+        "<!-- Comentário -->",
+        "/* Comentário */",
+        "// Comentário",
+        "** Comentário **"
+      ],
       "correta": 2,
       "tempo": 15
     },
     {
       "id": 4,
       "enunciado": "Qual função converte uma string JSON em um objeto JavaScript?",
-      "alternativas": ["JSON.stringify()", "JSON.parse()", "JSON.object()", "JSON.toJS()"],
+      "alternativas": [
+        "JSON.stringify()",
+        "JSON.parse()",
+        "JSON.object()",
+        "JSON.toJS()"
+      ],
       "correta": 1,
       "tempo": 20
     },
     {
       "id": 5,
       "enunciado": "Qual operador é usado para comparação estrita (valor e tipo)?",
-      "alternativas": ["==", "=", "===", "!="],
+      "alternativas": [
+        "==",
+        "=",
+        "===",
+        "!="
+      ],
       "correta": 2,
       "tempo": 15,
       "dobro": true

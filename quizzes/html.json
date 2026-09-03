@@ -1,39 +1,65 @@
 {
   "titulo": "HTML",
   "descricao": "Tags e estrutura básica de uma página HTML.",
+  "topico": "Programação",
   "perguntas": [
     {
       "id": 1,
       "enunciado": "Qual tag define o titulo de maior nivel do conteudo?",
-      "alternativas": ["<head>", "<title>", "<h1>", "<h6>"],
+      "alternativas": [
+        "<head>",
+        "<title>",
+        "<h1>",
+        "<h6>"
+      ],
       "correta": 2,
       "tempo": 15
     },
     {
       "id": 2,
       "enunciado": "Qual atributo descreve uma imagem para leitor de tela?",
-      "alternativas": ["alt", "title", "desc", "label"],
+      "alternativas": [
+        "alt",
+        "title",
+        "desc",
+        "label"
+      ],
       "correta": 0,
       "tempo": 15
     },
     {
       "id": 3,
       "enunciado": "Qual tag cria uma lista nao ordenada?",
-      "alternativas": ["<ol>", "<ul>", "<li>", "<dl>"],
+      "alternativas": [
+        "<ol>",
+        "<ul>",
+        "<li>",
+        "<dl>"
+      ],
       "correta": 1,
       "tempo": 15
     },
     {
       "id": 4,
       "enunciado": "Onde fica a tag meta charset?",
-      "alternativas": ["Dentro do body", "Dentro do head", "Antes do doctype", "Dentro do footer"],
+      "alternativas": [
+        "Dentro do body",
+        "Dentro do head",
+        "Antes do doctype",
+        "Dentro do footer"
+      ],
       "correta": 1,
       "tempo": 20
     },
     {
       "id": 5,
       "enunciado": "Qual tag semantica marca a navegacao principal da pagina?",
-      "alternativas": ["<div class=\"nav\">", "<nav>", "<menu-bar>", "<header-nav>"],
+      "alternativas": [
+        "<div class=\"nav\">",
+        "<nav>",
+        "<menu-bar>",
+        "<header-nav>"
+      ],
       "correta": 1,
       "tempo": 20,
       "dobro": true

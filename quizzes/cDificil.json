@@ -1,6 +1,7 @@
 {
   "titulo": "Logica de Programacao em C - Nivel Dificil",
   "descricao": "Perguntas de nivel dificil sobre logica de programacao, arrays, ponteiros, funcoes, recursao e interpretacao de codigo em C.",
+  "topico": "Programação",
   "perguntas": [
     {
       "id": 1,

@@ -1,8 +1,12 @@
+// mesma lista no server/temas.js pra validar; aqui so preenche o seletor
+const TOPICOS = ['Programação', 'Tecnologia', 'Matemática', 'Português', 'Ciências', 'História', 'Geografia', 'Diversos'];
+
 const el = (id) => document.getElementById(id);
 const elForm = el('form-tema');
 const elTemaId = el('tema-id');
 const elTitulo = el('tema-titulo');
 const elDescricao = el('tema-descricao');
+const elTopico = el('tema-topico');
 const elPerguntas = el('perguntas');
 const elAdicionarPergunta = el('adicionar-pergunta');
 const elErro = el('erro-tema');
@@ -12,6 +16,17 @@ const modeloPergunta = el('modelo-pergunta');
 const modeloAlternativa = el('modelo-alternativa');
 
 let contadorGrupo = 0;
+
+function montarTopicos() {
+  elTopico.innerHTML = '';
+  TOPICOS.forEach((topico) => {
+    const opcao = document.createElement('option');
+    opcao.value = topico;
+    opcao.textContent = topico;
+    elTopico.appendChild(opcao);
+  });
+}
+montarTopicos();
 
 function mostrarErro(texto, sucesso) {
   elErro.textContent = texto;
@@ -83,6 +98,7 @@ function resetarFormulario() {
   elTemaId.value = '';
   elTitulo.value = '';
   elDescricao.value = '';
+  elTopico.value = TOPICOS[0];
   elPerguntas.innerHTML = '';
   elPerguntas.appendChild(criarCardPergunta());
   renumerar();
@@ -107,6 +123,7 @@ function lerFormulario() {
   return {
     titulo: elTitulo.value.trim(),
     descricao: elDescricao.value.trim(),
+    topico: elTopico.value,
     perguntas
   };
 }
@@ -139,6 +156,7 @@ async function editarTema(id) {
     elTemaId.value = tema.id;
     elTitulo.value = tema.titulo;
     elDescricao.value = tema.descricao || '';
+    elTopico.value = tema.topico || TOPICOS[0];
     elPerguntas.innerHTML = '';
     tema.perguntas.forEach((p) => elPerguntas.appendChild(criarCardPergunta(p)));
     renumerar();
@@ -183,7 +201,7 @@ async function carregarMeusTemas() {
         // titulo do tema e texto livre do professor: fica em createTextNode, o rotulo de status (fixo) vai em innerHTML
         const nome = document.createElement('span');
         nome.className = 'meu-tema-nome';
-        nome.appendChild(document.createTextNode(t.titulo + ', ' + t.total + ' perguntas — '));
+        nome.appendChild(document.createTextNode(t.titulo + ' (' + t.topico + '), ' + t.total + ' perguntas — '));
         nome.insertAdjacentHTML('beforeend', rotuloStatus[t.status] || t.status);
         item.appendChild(nome);
 

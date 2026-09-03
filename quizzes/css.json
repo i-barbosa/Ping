@@ -1,34 +1,53 @@
 {
   "titulo": "CSS",
   "descricao": "Seletores, propriedades e conceitos básicos de estilização de página.",
+  "topico": "Programação",
   "perguntas": [
     {
       "id": 1,
       "enunciado": "Qual desses e um seletor de classe?",
-      "alternativas": [".botao", "#botao", "botao", "*botao"],
+      "alternativas": [
+        ".botao",
+        "#botao",
+        "botao",
+        "*botao"
+      ],
       "correta": 0,
       "tempo": 15
     },
-
     {
       "id": 2,
       "enunciado": "Qual propriedade arredonda os cantos de um elemento?",
-      "alternativas": ["border-radius", "corner-radius", "radius-border", "border-corner"],
+      "alternativas": [
+        "border-radius",
+        "corner-radius",
+        "radius-border",
+        "border-corner"
+      ],
       "correta": 0,
       "tempo": 15
     },
-
     {
       "id": 3,
       "enunciado": "Qual propriedade muda a cor do texto?",
-      "alternativas": ["background-color", "color", "font-color", "text-color"],
+      "alternativas": [
+        "background-color",
+        "color",
+        "font-color",
+        "text-color"
+      ],
       "correta": 1,
       "tempo": 15
     },
     {
       "id": 4,
       "enunciado": "Qual unidade e relativa ao tamanho da fonte do elemento raiz?",
-      "alternativas": ["em", "rem", "px", "pt"],
+      "alternativas": [
+        "em",
+        "rem",
+        "px",
+        "pt"
+      ],
       "correta": 1,
       "tempo": 20
     },
@@ -47,49 +66,63 @@
     {
       "id": 6,
       "enunciado": "Qual propriedade define as colunas de um grid?",
-      "alternativas": ["grid-columns", "grid-template-columns", "columns-template", "flex-columns"],
+      "alternativas": [
+        "grid-columns",
+        "grid-template-columns",
+        "columns-template",
+        "flex-columns"
+      ],
       "correta": 1,
       "tempo": 20,
       "dobro": true
     },
-
     {
       "id": 7,
       "enunciado": "Qual propriedade define o espaço externo de um elemento?",
-      "alternativas": ["padding", "margin", "gap", "spacing"],
+      "alternativas": [
+        "padding",
+        "margin",
+        "gap",
+        "spacing"
+      ],
       "correta": 1,
       "tempo": 15
     },
-
     {
       "id": 8,
       "enunciado": "Qual propriedade define o tipo da borda?",
-      "alternativas": ["border-style", "border-type", "style-border", "border-format"],
+      "alternativas": [
+        "border-style",
+        "border-type",
+        "style-border",
+        "border-format"
+      ],
       "correta": 0,
       "tempo": 15
     },
-
     {
       "id": 9,
       "enunciado": "Qual propriedade deixa o texto em negrito?",
-      "alternativas": ["font-style", "font-weight", "text-bold", "font-bold"],
+      "alternativas": [
+        "font-style",
+        "font-weight",
+        "text-bold",
+        "font-bold"
+      ],
       "correta": 1,
       "tempo": 15
     },
-
     {
-  "id": 10,
-  "enunciado": "Qual propriedade CSS permite definir cor, imagem, posição e outras configurações do fundo em uma única declaração?",
-  "alternativas": [
-    "background",
-    "background-style",
-    "background-config",
-    "background-settings"
-  ],
-  "correta": 0,
-  "tempo": 20
-}
-
-
+      "id": 10,
+      "enunciado": "Qual propriedade CSS permite definir cor, imagem, posição e outras configurações do fundo em uma única declaração?",
+      "alternativas": [
+        "background",
+        "background-style",
+        "background-config",
+        "background-settings"
+      ],
+      "correta": 0,
+      "tempo": 20
+    }
   ]
 }

@@ -1,39 +1,65 @@
 {
   "titulo": "Linguagem C - Avançado",
   "descricao": "Ponteiros, memória, funções e sintaxe do C pra quem já passou do básico.",
+  "topico": "Programação",
   "perguntas": [
     {
       "id": 1,
       "enunciado": "Em qual função a execução de um programa em C é iniciadaa?",
-      "alternativas": ["start()", "main()", "init()", "run()"],
+      "alternativas": [
+        "start()",
+        "main()",
+        "init()",
+        "run()"
+      ],
       "correta": 1,
       "tempo": 15
     },
     {
       "id": 2,
       "enunciado": "Qual especificador do printf é usado para imprimir um inteiro decimal assinado?",
-      "alternativas": ["%s", "%d", "%f", "%c"],
+      "alternativas": [
+        "%s",
+        "%d",
+        "%f",
+        "%c"
+      ],
       "correta": 1,
       "tempo": 15
     },
     {
       "id": 3,
       "enunciado": "Qual operador devolve o endereço de memória de uma variável?",
-      "alternativas": ["*", "&", "#", "->"],
+      "alternativas": [
+        "*",
+        "&",
+        "#",
+        "->"
+      ],
       "correta": 1,
       "tempo": 15
     },
     {
       "id": 4,
       "enunciado": "Qual biblioteca padrão inclui as funções de entrada/saída printf() e scanf()?",
-      "alternativas": ["stdlib.h", "stdio.h", "string.h", "math.h"],
+      "alternativas": [
+        "stdlib.h",
+        "stdio.h",
+        "string.h",
+        "math.h"
+      ],
       "correta": 1,
       "tempo": 15
     },
     {
       "id": 5,
       "enunciado": "Como se declara corretamente um vetor (array) estático de 10 inteiros?",
-      "alternativas": ["int v[10];", "int v(10);", "array v[10];", "int v{10};"],
+      "alternativas": [
+        "int v[10];",
+        "int v(10);",
+        "array v[10];",
+        "int v{10};"
+      ],
       "correta": 0,
       "tempo": 20,
       "dobro": true
@@ -41,7 +67,12 @@
     {
       "id": 6,
       "enunciado": "Qual é a função da biblioteca stdlib.h utilizada para alocar memória dinamicamente sem inicializar os blocos com zero?",
-      "alternativas": ["calloc()", "malloc()", "realloc()", "alloc()"],
+      "alternativas": [
+        "calloc()",
+        "malloc()",
+        "realloc()",
+        "alloc()"
+      ],
       "correta": 1,
       "tempo": 20
     },
@@ -60,7 +91,12 @@
     {
       "id": 8,
       "enunciado": "Dado o ponteiro 'struct Pessoa *p', qual operador deve ser usado para acessar o membro 'idade' através do ponteiro?",
-      "alternativas": ["p.idade", "p->idade", "p*idade", "p&idade"],
+      "alternativas": [
+        "p.idade",
+        "p->idade",
+        "p*idade",
+        "p&idade"
+      ],
       "correta": 1,
       "tempo": 20
     },
@@ -80,7 +116,12 @@
     {
       "id": 10,
       "enunciado": "Qual caractere é automaticamente inserido no final de uma string para indicar sua terminação em C?",
-      "alternativas": ["'\\n'", "'\\0'", "'\\t'", "'EOF'"],
+      "alternativas": [
+        "'\\n'",
+        "'\\0'",
+        "'\\t'",
+        "'EOF'"
+      ],
       "correta": 1,
       "tempo": 15
     },
@@ -111,7 +152,12 @@
     {
       "id": 13,
       "enunciado": "Qual modo de abertura na função fopen() é usado para abrir um arquivo para escrita, criando o arquivo caso ele não exista ou sobrescrevendo seu conteúdo?",
-      "alternativas": ["\"r\"", "\"a\"", "\"w\"", "\"x\""],
+      "alternativas": [
+        "\"r\"",
+        "\"a\"",
+        "\"w\"",
+        "\"x\""
+      ],
       "correta": 2,
       "tempo": 20
     },
@@ -131,7 +177,12 @@
     {
       "id": 15,
       "enunciado": "Qual é o valor numérico retornado por padrão pela macro NULL em C?",
-      "alternativas": ["-1", "0", "1", "Void"],
+      "alternativas": [
+        "-1",
+        "0",
+        "1",
+        "Void"
+      ],
       "correta": 1,
       "tempo": 15
     }

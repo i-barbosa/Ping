@@ -1,6 +1,7 @@
 {
   "titulo": "Tecnologia da Informacao",
   "descricao": "Quiz com perguntas sobre programacao, desenvolvimento web, banco de dados, redes, hardware, seguranca e conceitos gerais de TI.",
+  "topico": "Tecnologia",
   "perguntas": [
     {
       "id": 1,

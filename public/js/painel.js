@@ -1,3 +1,6 @@
+// mesma lista no server/temas.js; so define a ordem em que os grupos aparecem aqui
+const TOPICOS = ['Programação', 'Tecnologia', 'Matemática', 'Português', 'Ciências', 'História', 'Geografia', 'Diversos'];
+
 const el = (id) => document.getElementById(id);
 const elSaudacao = el('saudacao');
 const elSair = el('sair');
@@ -66,6 +69,35 @@ function montarCirculo(tema, aoClicar) {
   return item;
 }
 
+// tema -> topico (Historia) -> temas de historia: agrupa mantendo a ordem fixa de TOPICOS, so mostra grupo com tema
+function agruparPorTopico(lista) {
+  const porTopico = new Map();
+  lista.forEach((tema) => {
+    const chave = tema.topico || 'Diversos';
+    if (!porTopico.has(chave)) porTopico.set(chave, []);
+    porTopico.get(chave).push(tema);
+  });
+  const ordem = [...TOPICOS, ...[...porTopico.keys()].filter((t) => !TOPICOS.includes(t))];
+  return ordem.filter((topico) => porTopico.has(topico)).map((topico) => [topico, porTopico.get(topico)]);
+}
+
+function montarGrupoTopico(topico, temasDoTopico, aoClicar) {
+  const grupo = document.createElement('div');
+  grupo.className = 'topico-grupo';
+
+  const titulo = document.createElement('h3');
+  titulo.className = 'topico-titulo';
+  titulo.textContent = topico;
+  grupo.appendChild(titulo);
+
+  const linha = document.createElement('div');
+  linha.className = 'topico-linha';
+  temasDoTopico.forEach((tema) => linha.appendChild(montarCirculo(tema, aoClicar)));
+  grupo.appendChild(linha);
+
+  return grupo;
+}
+
 function desenharCirculosPrincipais() {
   elTemasCirculos.innerHTML = '';
   if (temas.length === 0) {
@@ -75,22 +107,24 @@ function desenharCirculosPrincipais() {
     elTemasCirculos.appendChild(vazio);
     return;
   }
-  temas.forEach((tema) => {
-    elTemasCirculos.appendChild(montarCirculo(tema, (t) => abrirBolha(t)));
+  agruparPorTopico(temas).forEach(([topico, temasDoTopico]) => {
+    elTemasCirculos.appendChild(montarGrupoTopico(topico, temasDoTopico, (t) => abrirBolha(t)));
   });
 }
 
 function desenharCirculosBolha() {
   elBolhaTemas.innerHTML = '';
-  temas.forEach((tema) => {
-    const circulo = montarCirculo(tema, (t, elemento) => {
+  agruparPorTopico(temas).forEach(([topico, temasDoTopico]) => {
+    const grupo = montarGrupoTopico(topico, temasDoTopico, (t, elemento) => {
       temaEscolhido = t;
       elBolhaTemas.querySelectorAll('.tema-circulo').forEach((c) => c.classList.remove('escolhido'));
       elemento.classList.add('escolhido');
       elBolhaConfirmar.disabled = false;
     });
-    if (temaEscolhido && temaEscolhido.arquivo === tema.arquivo) circulo.classList.add('escolhido');
-    elBolhaTemas.appendChild(circulo);
+    grupo.querySelectorAll('.tema-circulo').forEach((circulo, i) => {
+      if (temaEscolhido && temasDoTopico[i].arquivo === temaEscolhido.arquivo) circulo.classList.add('escolhido');
+    });
+    elBolhaTemas.appendChild(grupo);
   });
 }
 

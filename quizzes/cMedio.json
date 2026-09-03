@@ -1,6 +1,7 @@
 {
   "titulo": "Logica de Programacao em C - Nivel Medio",
   "descricao": "Perguntas de nivel medio sobre logica de programacao, operadores, condicoes e lacos em C.",
+  "topico": "Programação",
   "perguntas": [
     {
       "id": 1,

@@ -27,7 +27,7 @@ app.use(express.json({ limit: '100kb' })); // tema com varias perguntas passa pe
 
 // sem no-cache o celular fica com a tela da versao anterior depois do deploy
 app.use(
-  express.static(path.join(__dirname, 'public'), {
+  express.static(path.join(__dirname, '..', 'public'), {
     etag: true,
     maxAge: 0,
     setHeaders: (res) => res.setHeader('Cache-Control', 'no-cache')
@@ -36,31 +36,31 @@ app.use(
 
 app.get('/', (req, res) => res.redirect(professorDaRequisicao(req) ? '/painel' : '/entrar'));
 
-app.get('/entrar', (req, res) => res.sendFile(path.join(__dirname, 'public', 'entrar.html')));
+app.get('/entrar', (req, res) => res.sendFile(path.join(__dirname, '..', 'public', 'entrar.html')));
 
 app.get('/painel', (req, res) => {
   if (!professorDaRequisicao(req)) return res.redirect('/entrar');
-  res.sendFile(path.join(__dirname, 'public', 'painel.html'));
+  res.sendFile(path.join(__dirname, '..', 'public', 'painel.html'));
 });
 
 app.get('/host', (req, res) => {
   if (!professorDaRequisicao(req)) return res.redirect('/entrar');
-  res.sendFile(path.join(__dirname, 'public', 'host.html'));
+  res.sendFile(path.join(__dirname, '..', 'public', 'host.html'));
 });
 
 app.get('/criar-tema', (req, res) => {
   if (!professorDaRequisicao(req)) return res.redirect('/entrar');
-  res.sendFile(path.join(__dirname, 'public', 'criar-tema.html'));
+  res.sendFile(path.join(__dirname, '..', 'public', 'criar-tema.html'));
 });
 
 app.get('/admin', async (req, res) => {
   const professorId = professorDaRequisicao(req);
   if (!professorId) return res.redirect('/entrar');
   if (!(await ehAdmin(professorId))) return res.redirect('/painel');
-  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+  res.sendFile(path.join(__dirname, '..', 'public', 'admin.html'));
 });
 
-app.get('/play', (req, res) => res.sendFile(path.join(__dirname, 'public', 'play.html')));
+app.get('/play', (req, res) => res.sendFile(path.join(__dirname, '..', 'public', 'play.html')));
 
 app.get('/entrada.json', (req, res) => {
   const professorId = professorDaRequisicao(req);

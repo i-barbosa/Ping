@@ -4,13 +4,18 @@ const express = require('express');
 const { pool, ehAdmin } = require('./db');
 const { professorDaRequisicao } = require('./auth');
 
-const PASTA_QUIZZES = path.join(__dirname, 'quizzes');
+const PASTA_QUIZZES = path.join(__dirname, '..', 'quizzes');
+
+// lista fixa: evita "Historia" vs "História" vs "história do brasil" espalhado em topicos diferentes.
+// mesma lista no criar-tema.js pro seletor; aqui so valida o que chega
+const TOPICOS = ['Programação', 'Tecnologia', 'Matemática', 'Português', 'Ciências', 'História', 'Geografia', 'Diversos'];
 
 function validarBanco(dados) {
   const erros = [];
   if (!dados || typeof dados !== 'object') return ['arquivo nao e um objeto JSON'];
   if (typeof dados.titulo !== 'string' || !dados.titulo.trim()) erros.push('falta o campo titulo');
   if (dados.descricao !== undefined && typeof dados.descricao !== 'string') erros.push('descricao precisa ser texto');
+  if (!TOPICOS.includes(dados.topico)) erros.push('topico precisa ser um de: ' + TOPICOS.join(', '));
   if (!Array.isArray(dados.perguntas) || dados.perguntas.length === 0) {
     erros.push('falta a lista perguntas ou ela esta vazia');
     return erros;
@@ -69,6 +74,7 @@ function carregarArquivos() {
     mapa.set(arquivo, {
       titulo: dados.titulo,
       descricao: dados.descricao || '',
+      topico: dados.topico,
       perguntas: dados.perguntas,
       editavel: false,
       criadoPor: null
@@ -83,12 +89,13 @@ const arquivos = carregarArquivos(); // chave = nome do arquivo, fixo desde o bo
 const doBanco = new Map(); // chave = 'db:' + id, recarregado a cada mudanca
 
 async function carregarDoBanco() {
-  const resultado = await pool.query('SELECT id, titulo, descricao, perguntas, criado_por, status FROM temas ORDER BY id');
+  const resultado = await pool.query('SELECT id, titulo, descricao, topico, perguntas, criado_por, status FROM temas ORDER BY id');
   doBanco.clear();
   resultado.rows.forEach((linha) => {
     doBanco.set('db:' + linha.id, {
       titulo: linha.titulo,
       descricao: linha.descricao || '',
+      topico: linha.topico,
       perguntas: linha.perguntas,
       editavel: true,
       criadoPor: linha.criado_por,
@@ -118,11 +125,11 @@ function temaExiste(chave, professorId) {
 function listarTemas(professorId) {
   const lista = [];
   arquivos.forEach((t, chave) => {
-    lista.push({ arquivo: chave, titulo: t.titulo, descricao: t.descricao, total: t.perguntas.length, editavel: false, criadoPor: null, status: 'aprovado' });
+    lista.push({ arquivo: chave, titulo: t.titulo, descricao: t.descricao, topico: t.topico, total: t.perguntas.length, editavel: false, criadoPor: null, status: 'aprovado' });
   });
   doBanco.forEach((t, chave) => {
     if (!podeUsar(t, professorId)) return;
-    lista.push({ arquivo: chave, titulo: t.titulo, descricao: t.descricao, total: t.perguntas.length, editavel: true, criadoPor: t.criadoPor, status: t.status });
+    lista.push({ arquivo: chave, titulo: t.titulo, descricao: t.descricao, topico: t.topico, total: t.perguntas.length, editavel: true, criadoPor: t.criadoPor, status: t.status });
   });
   return lista;
 }
@@ -132,14 +139,14 @@ function meusTemas(professorId) {
   const lista = [];
   doBanco.forEach((t, chave) => {
     if (t.criadoPor !== professorId) return;
-    lista.push({ arquivo: chave, titulo: t.titulo, descricao: t.descricao, total: t.perguntas.length, status: t.status });
+    lista.push({ arquivo: chave, titulo: t.titulo, descricao: t.descricao, topico: t.topico, total: t.perguntas.length, status: t.status });
   });
   return lista;
 }
 
 async function temasPendentes() {
   const resultado = await pool.query(
-    `SELECT temas.id, temas.titulo, temas.descricao, temas.perguntas, professores.nome AS criador_nome, professores.email AS criador_email
+    `SELECT temas.id, temas.titulo, temas.descricao, temas.topico, temas.perguntas, professores.nome AS criador_nome, professores.email AS criador_email
      FROM temas JOIN professores ON professores.id = temas.criado_por
      WHERE temas.status = 'pendente' ORDER BY temas.criado_em`
   );
@@ -147,6 +154,7 @@ async function temasPendentes() {
     id: linha.id,
     titulo: linha.titulo,
     descricao: linha.descricao,
+    topico: linha.topico,
     total: linha.perguntas.length,
     perguntas: linha.perguntas,
     criadorNome: linha.criador_nome,
@@ -175,8 +183,8 @@ async function criarTema(professorId, dados) {
     throw erro;
   }
   const resultado = await pool.query(
-    "INSERT INTO temas (titulo, descricao, perguntas, criado_por, status) VALUES ($1, $2, $3, $4, 'pendente') RETURNING id",
-    [dados.titulo.trim(), (dados.descricao || '').trim(), JSON.stringify(dados.perguntas), professorId]
+    "INSERT INTO temas (titulo, descricao, topico, perguntas, criado_por, status) VALUES ($1, $2, $3, $4, $5, 'pendente') RETURNING id",
+    [dados.titulo.trim(), (dados.descricao || '').trim(), dados.topico, JSON.stringify(dados.perguntas), professorId]
   );
   await carregarDoBanco();
   return 'db:' + resultado.rows[0].id;
@@ -191,8 +199,8 @@ async function editarTema(id, dados) {
     throw erro;
   }
   const resultado = await pool.query(
-    "UPDATE temas SET titulo = $1, descricao = $2, perguntas = $3, status = 'pendente' WHERE id = $4 RETURNING id",
-    [dados.titulo.trim(), (dados.descricao || '').trim(), JSON.stringify(dados.perguntas), id]
+    "UPDATE temas SET titulo = $1, descricao = $2, topico = $3, perguntas = $4, status = 'pendente' WHERE id = $5 RETURNING id",
+    [dados.titulo.trim(), (dados.descricao || '').trim(), dados.topico, JSON.stringify(dados.perguntas), id]
   );
   if (resultado.rowCount === 0) {
     const erro = new Error('tema nao encontrado');
@@ -256,7 +264,7 @@ router.get('/api/temas/:id', (req, res) => {
   const tema = doBanco.get('db:' + Number(req.params.id));
   if (!tema) return res.status(404).json({ erro: 'tema nao encontrado' });
   if (tema.criadoPor !== professorId) return res.status(403).json({ erro: 'so quem criou pode editar' });
-  res.json({ id: Number(req.params.id), titulo: tema.titulo, descricao: tema.descricao, perguntas: tema.perguntas });
+  res.json({ id: Number(req.params.id), titulo: tema.titulo, descricao: tema.descricao, topico: tema.topico, perguntas: tema.perguntas });
 });
 
 router.post('/api/temas', async (req, res) => {

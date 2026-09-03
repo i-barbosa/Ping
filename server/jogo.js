@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const { professorDaRequisicao } = require('./auth');
 const { buscarTema, temaExiste } = require('./temas');
 
-const PASTA_RELATORIOS = path.join(__dirname, 'relatorios');
+const PASTA_RELATORIOS = path.join(__dirname, '..', 'relatorios');
 
 const LIMITE_MENSAGENS = 25; // por segundo, por conexao
 const JANELA_MS = 1000;

@@ -28,7 +28,7 @@ function montarPendente(tema) {
   const item = modelo.content.firstElementChild.cloneNode(true);
   item.querySelector('.pendente-titulo').textContent = tema.titulo;
   item.querySelector('.pendente-meta').textContent =
-    tema.total + ' perguntas · enviado por ' + tema.criadorNome + ' (' + tema.criadorEmail + ')';
+    tema.topico + ' · ' + tema.total + ' perguntas · enviado por ' + tema.criadorNome + ' (' + tema.criadorEmail + ')';
   item.querySelector('.pendente-descricao').textContent = tema.descricao || '(sem descrição)';
 
   const listaPerguntas = item.querySelector('.pendente-perguntas');

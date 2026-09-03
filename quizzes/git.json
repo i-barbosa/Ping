@@ -1,18 +1,29 @@
 {
   "titulo": "Git",
   "descricao": "Comandos e conceitos básicos de controle de versão com Git.",
+  "topico": "Programação",
   "perguntas": [
     {
       "id": 1,
       "enunciado": "Qual comando cria um repositorio Git novo na pasta atual?",
-      "alternativas": ["git init", "git start", "git create", "git new"],
+      "alternativas": [
+        "git init",
+        "git start",
+        "git create",
+        "git new"
+      ],
       "correta": 0,
       "tempo": 20
     },
     {
       "id": 2,
       "enunciado": "Qual comando envia os commits locais para o repositorio remoto?",
-      "alternativas": ["git send", "git push", "git upload", "git remote"],
+      "alternativas": [
+        "git send",
+        "git push",
+        "git upload",
+        "git remote"
+      ],
       "correta": 1,
       "tempo": 15
     },
@@ -31,14 +42,24 @@
     {
       "id": 4,
       "enunciado": "Qual comando cria uma branch nova e ja troca para ela?",
-      "alternativas": ["git branch -m", "git switch -c", "git merge -b", "git clone -b"],
+      "alternativas": [
+        "git branch -m",
+        "git switch -c",
+        "git merge -b",
+        "git clone -b"
+      ],
       "correta": 1,
       "tempo": 20
     },
     {
       "id": 5,
       "enunciado": "Qual arquivo lista o que o Git deve ignorar?",
-      "alternativas": [".gitkeep", ".gitignore", "ignore.txt", ".gitconfig"],
+      "alternativas": [
+        ".gitkeep",
+        ".gitignore",
+        "ignore.txt",
+        ".gitconfig"
+      ],
       "correta": 1,
       "tempo": 15,
       "dobro": true

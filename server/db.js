@@ -31,6 +31,8 @@ async function migrar() {
     )
   `);
   await pool.query(`ALTER TABLE temas ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'pendente'`);
+  // temas antigos do banco nao tinham topico; caem em Diversos ate o professor editar e escolher um de verdade
+  await pool.query(`ALTER TABLE temas ADD COLUMN IF NOT EXISTS topico TEXT NOT NULL DEFAULT 'Diversos'`);
 }
 
 async function ehAdmin(professorId) {
